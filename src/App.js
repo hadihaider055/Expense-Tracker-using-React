@@ -1,24 +1,21 @@
-import React from 'react';
-import './App.css';
-import { Balance } from './Components/Balance';
-import Header from './Components/Header';
-import { History } from './Components/History';
-import { Total } from './Components/Total';
-import { Transactions } from './Components/Transactions';
-import { TransactionProvider } from './Components/transContext';
+import React from "react";
+import "./App.css";
+import Balance from "./Components/Balance/index";
+import Header from "./Components/Header/index";
+import History from "./Components/History/index";
+import Total from "./Components/Total/index";
+import Transactions from "./Components/Transactions/index";
 function App() {
   return (
-     <TransactionProvider>
     <div className="main">
-    <div className="App">
-    <Header />
-    <Balance />
-    <Total />
-    <History />
-    <Transactions />
+      <div className="App">
+        <Header />
+        <Balance />
+        <Total />
+        <History />
+        <Transactions />
+      </div>
     </div>
-    </div>
-    </TransactionProvider>
   );
 }
 
