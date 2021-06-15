@@ -17,17 +17,29 @@ function moneyFormatter(num) {
   );
 }
 
-export const Balance = () => {
+export const IncomeExpenses = () => {
   const { transactions } = useContext(GlobalContext);
 
   const amounts = transactions.map((transaction) => transaction.amount);
 
-  const total = amounts.reduce((acc, item) => (acc += item), 0);
+  const income = amounts
+    .filter((item) => item > 0)
+    .reduce((acc, item) => (acc += item), 0);
+
+  const expense =
+    amounts.filter((item) => item < 0).reduce((acc, item) => (acc += item), 0) *
+    -1;
 
   return (
-    <>
-      <h4>Your Balance</h4>
-      <h1>{moneyFormatter(total)}</h1>
-    </>
+    <div className="inc-exp-container">
+      <div>
+        <h4>Income</h4>
+        <p className="money plus">{moneyFormatter(income)}</p>
+      </div>
+      <div>
+        <h4>Expense</h4>
+        <p className="money minus">{moneyFormatter(expense)}</p>
+      </div>
+    </div>
   );
 };
